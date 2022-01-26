@@ -1,0 +1,63 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+.App {
+  text-align: center;
+  /* background-color: #f3f4f6; */
+}
+
+#color__btn {
+  border: 2px solid #1d4ed8;
+}
+
+#color__btn:hover,
+#color__btn:active {
+  border: 2px solid #111827;
+}
+.others {
+  padding: 1rem;
+}
+.pinned {
+  padding: 1rem;
+}
+.edit__title {
+  padding: 1rem 0;
+  font-weight: bolder;
+}
+.edit__content {
+  padding: 1rem 0;
+}
+#outline:focus {
+  outline: 2px solid #1d4ed8;
+}
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: white;
+}
+.change__btn:hover {
+  border: 3px solid #111827;
+  background-color: transparent;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: #111827;
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+.change__btn {
+  border: 3px solid #111827;
+  background-color: #111827;
+  margin-right: 1rem;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+  padding: 0.3rem;
+}
+[contentEditable='true']:empty:not(:focus):before {
+  content: attr(data-text);
+}
