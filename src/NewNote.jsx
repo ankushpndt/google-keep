@@ -7,7 +7,7 @@ import { useAuth } from './authContext';
 import './styles.css';
 import bookmark from './assets/bookmark.svg';
 import border from './assets/border.svg';
-export function NewNote() {
+export const NewNote = () => {
   const { isPinned, setPinned } = useNote();
   const { title, setTitle } = useNote();
   const { content, setContent } = useNote();
@@ -57,43 +57,47 @@ export function NewNote() {
       <div
         onFocus={() => setIsActive(true)}
         style={{
-          border: '2px solid #f0f0f0',
-          borderRadius: '10px',
+          display: 'flex',
+          flexDirection: 'column',
+          textAlign: 'left',
           maxWidth: '650px',
           margin: 'auto',
           padding: '1rem',
+          borderRadius: '10px',
+          marginBottom: '1rem',
           backgroundColor: color,
+          border: '2px solid',
         }}
       >
         <div style={{ backgroundColor: color }}>
-          <input
-            type='text'
-            placeholder='Enter title here'
-            value={title}
-            style={{
-              border: 'none',
-              padding: '0.5rem',
-              marginBottom: '1rem',
-              marginRight: '2.3rem',
-            }}
-            id='outline'
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <button
-            style={{
-              border: 'none',
-              backgroundColor: 'transparent',
-              marginRight: '1rem',
-              cursor: 'pointer',
-            }}
-            onClick={() => setPinned((isPinned) => !isPinned)}
-          >
-            {isPinned ? (
-              <img src={bookmark} alt='bookmark' width='20' height='20' />
-            ) : (
-              <img src={border} alt='border' width='20' height='20' />
-            )}
-          </button>
+          <div className='new__note__body'>
+            <input
+              type='text'
+              placeholder='Enter title here'
+              value={title}
+              style={{
+                border: 'none',
+                padding: '0.5rem',
+              }}
+              id='outline'
+              onChange={(e) => setTitle(e.target.value)}
+            />
+            <button
+              style={{
+                border: 'none',
+                backgroundColor: 'transparent',
+                marginRight: '1rem',
+                cursor: 'pointer',
+              }}
+              onClick={() => setPinned((isPinned) => !isPinned)}
+            >
+              {isPinned ? (
+                <img src={bookmark} alt='bookmark' width='20' height='20' />
+              ) : (
+                <img src={border} alt='border' width='20' height='20' />
+              )}
+            </button>
+          </div>
           <br />
           <input
             type='text'
@@ -102,22 +106,19 @@ export function NewNote() {
             style={{
               border: 'none',
               padding: '0.5rem',
-              marginBottom: '1rem',
-              marginRight: '4.5rem',
+              width: '100%',
             }}
             onChange={(e) => setContent(e.target.value)}
             id='outline'
           />
-
           <br />
-          <ColorPicker />
+          <br />
           <select
             onChange={(e) => setTag(e.target.value)}
             style={{
-              border: 'none',
               width: '6.8rem',
               padding: '0.5rem',
-              margin: '1rem',
+              marginRight: '1rem',
             }}
           >
             <option value='No Tag'>No Tag</option>
@@ -142,8 +143,10 @@ export function NewNote() {
           <button className='change__btn' onClick={clear}>
             Clear
           </button>
+          <br />
+          <ColorPicker />
         </div>
       </div>
     </div>
   );
-}
+};

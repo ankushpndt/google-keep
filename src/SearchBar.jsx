@@ -27,7 +27,6 @@ export const SearchBar = () => {
             padding: '0.5rem',
             borderRadius: '8px',
             border: 'none',
-            margin: '1rem',
           }}
         />
       </form>

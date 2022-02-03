@@ -25,6 +25,11 @@
 .new__note {
   padding: 1rem;
 }
+.new__note__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .others {
   padding: 1rem;
 }
@@ -37,7 +42,6 @@
   align-items: center;
 }
 .edit__title {
-  padding-bottom: 1rem;
   font-weight: bolder;
 }
 .edit__content {
