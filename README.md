@@ -1,5 +1,5 @@
 # Notes App
-##Features
+## Features
 1. Create a note.
 2. Edit a note.
 3. Customize the colors of a note.
