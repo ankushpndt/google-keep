@@ -20,7 +20,7 @@ export const App = () => {
             display: 'flex',
             justifyContent: 'space-evenly',
             backgroundColor: 'black',
-            // padding: '1rem',
+            padding: '1rem',
             alignItems: 'center',
           }}
         >
