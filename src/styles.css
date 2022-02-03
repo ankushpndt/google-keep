@@ -94,4 +94,20 @@
   .navbar ul {
     padding: 1rem;
   }
+  .search__bar__ip {
+    max-width: 8rem;
+  }
+  .note__route {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .search__bar__ip {
+    width: 5rem;
+  }
+  .note__route {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
 }

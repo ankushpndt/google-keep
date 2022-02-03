@@ -1,20 +1,17 @@
 import { useEffect } from 'react';
 import { useNote } from './noteContext';
-
+import './styles.css';
 export const SearchBar = () => {
   const { search, setSearch, notes, setFilteredArr } = useNote();
-  // console.log(notes);
+
   useEffect(() => {
     const searchResult = notes?.filter((note) =>
       note?.title?.toLowerCase().includes(search.toLowerCase())
     );
 
     setFilteredArr(searchResult);
-
-    // setSearch(searchResult);
   }, [notes, search]);
 
-  // console.log(search);
   return (
     <>
       <form>
@@ -28,6 +25,7 @@ export const SearchBar = () => {
             borderRadius: '8px',
             border: 'none',
           }}
+          className='search__bar__ip'
         />
       </form>
     </>
