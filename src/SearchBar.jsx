@@ -14,20 +14,18 @@ export const SearchBar = () => {
 
   return (
     <>
-      <form>
-        <input
-          type='search'
-          placeholder='Search'
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          style={{
-            padding: '0.5rem',
-            borderRadius: '8px',
-            border: 'none',
-          }}
-          className='search__bar__ip'
-        />
-      </form>
+      <input
+        type='search'
+        placeholder='Search'
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        style={{
+          padding: '0.5rem',
+          borderRadius: '8px',
+          border: 'none',
+        }}
+        className='search__bar__ip'
+      />
     </>
   );
 };
