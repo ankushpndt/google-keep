@@ -31,7 +31,7 @@ export const App = () => {
           {!login && (
             <NavLink
               style={({ isActive }) => {
-                return { color: isActive ? 'blue' : 'white' };
+                return { color: isActive ? '#67e8f9' : 'white' };
               }}
               className='note__route'
               to='/'
@@ -45,7 +45,7 @@ export const App = () => {
           {!login && (
             <NavLink
               style={({ isActive }) => {
-                return { color: isActive ? 'blue' : 'white' };
+                return { color: isActive ? '#67e8f9' : 'white' };
               }}
               className='note__route'
               to='/signup'
@@ -59,7 +59,7 @@ export const App = () => {
           {login && (
             <NavLink
               style={({ isActive }) => {
-                return { color: isActive ? 'blue' : 'white' };
+                return { color: isActive ? '#67e8f9' : 'white' };
               }}
               className='note__route'
               onClick={userLogout}
