@@ -1,95 +1,124 @@
-// import { useNavigate } from "react-router-dom";
 import { useAuth } from './authContext';
 import React, { useState } from 'react';
-import { Routes, Route, NavLink } from 'react-router-dom';
-export function Signup() {
-  // const { state } = useLocation();
-  // const navigate = useNavigate();
+import { NavLink } from 'react-router-dom';
+import './styles.css';
+export const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const { signUpWithCredentials, error } = useAuth();
-  function nameHandler(e) {
-    let name = e.target.value;
-    setName(name);
-  }
-  function emailHandler(e) {
-    let email = e.target.value;
-    setEmail(email);
-  }
 
-  const passwordHandler = (e) => {
-    let password = e.target.value;
-    setPassword(password);
-  };
-  async function submitHandler(e) {
+  const submitHandler = async (e) => {
     e.preventDefault();
 
     signUpWithCredentials(name, email, password);
-  }
+  };
 
   return (
-    <>
-      <h1> This is signup page </h1>
-      <form
-        onSubmit={submitHandler}
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          flexDirection: 'column',
-          margin: '6rem auto',
-          padding: '4rem',
-          border: '2px solid #f0f0f0',
-        }}
-      >
-        <label htmlFor=''>Name:</label>
-        <input
-          type='text'
-          name='fullName'
-          placeholder='Enter your name here'
-          onChange={nameHandler}
-          required
-        />
-        <label>
-          Email:{' '}
+    <div className='signup'>
+      <div style={{ maxWidth: '400px', width: '100%' }}>
+        <h2 style={{ textAlign: 'center', marginBottom: '4px' }}>Sign Up</h2>
+        <form
+          onSubmit={submitHandler}
+          style={{
+            margin: '2rem auto',
+            padding: '2rem',
+            border: '2px solid #f0f0f0',
+          }}
+        >
+          <div className='name'>
+            <label
+              style={{
+                display: 'block',
+                marginLeft: '3.8rem',
+                paddingBottom: '0.5rem',
+                textAlign: 'left',
+              }}
+            >
+              Name
+            </label>
+            <input
+              type='text'
+              name='fullName'
+              placeholder='Enter your name here'
+              onChange={(e) => setName(e.target.value)}
+              required
+              style={{ padding: '6px', width: '210px' }}
+            />
+          </div>
+          <div className='email'>
+            <label
+              style={{
+                display: 'block',
+                marginLeft: '3.8rem',
+                paddingBottom: '0.5rem',
+                textAlign: 'left',
+              }}
+            >
+              Email
+            </label>
+            <input
+              type='text'
+              name='email'
+              placeholder='Enter your email here'
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              style={{ padding: '6px', width: '210px' }}
+            />
+            <div className='email__error'>{error && error.email}</div>
+          </div>
+          <div className='password'>
+            <label
+              style={{
+                display: 'block',
+                marginLeft: '3.8rem',
+                paddingBottom: '0.5rem',
+                textAlign: 'left',
+              }}
+            >
+              Password
+            </label>
+            <input
+              type='password'
+              name='password'
+              placeholder='Enter your password here'
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              style={{
+                padding: '6px',
+                width: '210px',
+              }}
+            />
+            <div className='password__error'>{error && error.password}</div>
+          </div>
           <input
-            type='text'
-            name='email'
-            placeholder='Enter your email here'
-            onChange={emailHandler}
-            required
-          />
-        </label>
-        <div className='email__error'>{error && error.email}</div>
-        <br />
-        <br />
-        <label>
-          Password:{' '}
-          <input
-            type='password'
-            name='password'
-            placeholder='Enter your password here'
-            onChange={passwordHandler}
-            required
-          />
-        </label>
-        <div className='password__error'>{error && error.password}</div>
-        <br />
-        <input type='submit' value='Sign Up' />
-        <p>
-          <NavLink
+            type='submit'
             style={{
-              textDecoration: 'none',
-              color: '#3B82F6',
+              width: '63%',
+              textAlign: 'center',
+              marginTop: '2px',
+              backgroundColor: '#3B82F6',
+              border: 'none',
+              color: 'white',
+              padding: '6px',
+              borderRadius: '5px',
+              marginBottom: '1rem',
             }}
-            activeStyle={{ fontWeight: 'bold' }}
-            to='/'
-          >
-            Login instead
-          </NavLink>
-        </p>
-      </form>
-    </>
+            value='Sign Up'
+          />
+          <p>
+            <NavLink
+              style={{
+                textDecoration: 'none',
+                color: '#3B82F6',
+              }}
+              to='/'
+            >
+              Login instead
+            </NavLink>
+          </p>
+        </form>
+      </div>
+    </div>
   );
-}
+};

@@ -65,7 +65,8 @@ export function AuthProvider({ children }) {
       }
       if (response.data.user) navigate(state?.from ? state.from : '/home');
     } catch (error) {
-      setError(error.response.data.errors);
+      console.log(error);
+      // setError(error.response.data.errors);
     }
   };
   const loginUser = ({ token, userName }) => {

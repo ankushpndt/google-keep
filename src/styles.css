@@ -6,9 +6,14 @@
 }
 .App {
   text-align: center;
-  /* background-color: #f3f4f6; */
 }
-
+.notes {
+  padding: 1rem;
+}
+.note__route {
+  text-decoration: none;
+  display: flex;
+}
 #color__btn {
   border: 2px solid #1d4ed8;
 }
@@ -17,14 +22,22 @@
 #color__btn:active {
   border: 2px solid #111827;
 }
+.new__note {
+  padding: 1rem;
+}
 .others {
   padding: 1rem;
 }
 .pinned {
   padding: 1rem;
 }
+.note__card__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .edit__title {
-  padding: 1rem 0;
+  padding-bottom: 1rem;
   font-weight: bolder;
 }
 .edit__content {
@@ -32,6 +45,18 @@
 }
 #outline:focus {
   outline: 2px solid #1d4ed8;
+}
+.signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: white;
+}
+.name,
+.email,
+.password {
+  padding-bottom: 1rem;
 }
 .login {
   display: flex;
@@ -60,4 +85,9 @@
 }
 [contentEditable='true']:empty:not(:focus):before {
   content: attr(data-text);
+}
+@media screen and (max-width: 640px) {
+  .navbar ul {
+    padding: 1rem;
+  }
 }

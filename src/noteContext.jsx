@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react';
-import { v4 } from 'uuid';
+
 import axios from 'axios';
 import { useAuth } from './authContext';
 const noteContext = createContext();
@@ -9,7 +9,7 @@ export function NoteProvider({ children }) {
 
   useEffect(() => {
     loadInitialData();
-  }, []);
+  }, [token]);
   const loadInitialData = async () => {
     if (token) {
       try {
@@ -18,7 +18,7 @@ export function NoteProvider({ children }) {
 
           { headers: { 'auth-token': token } }
         );
-        // console.log(response);
+
         setNotes(response.data.notes);
       } catch (error) {
         console.log(error);
@@ -36,7 +36,6 @@ export function NoteProvider({ children }) {
   const [search, setSearch] = useState('');
   const [filteredArr, setFilteredArr] = useState([]);
 
-  console.log(filteredArr);
   return (
     <noteContext.Provider
       value={{
@@ -61,7 +60,6 @@ export function NoteProvider({ children }) {
       }}
     >
       {children}
-      {console.log(filteredArr)}
     </noteContext.Provider>
   );
 }

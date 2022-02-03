@@ -19,7 +19,7 @@ export const SearchBar = () => {
     <>
       <form>
         <input
-          type='text'
+          type='search'
           placeholder='Search'
           value={search}
           onChange={(e) => setSearch(e.target.value)}

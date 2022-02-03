@@ -53,13 +53,13 @@ export function NewNote() {
   };
 
   return (
-    <div>
+    <div className='new__note'>
       <div
         onFocus={() => setIsActive(true)}
         style={{
           border: '2px solid #f0f0f0',
-          borderRadius: '8px',
-          width: '650px',
+          borderRadius: '10px',
+          maxWidth: '650px',
           margin: 'auto',
           padding: '1rem',
           backgroundColor: color,

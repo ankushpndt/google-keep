@@ -1,15 +1,13 @@
-import { useNote } from './noteContext';
-// import { ColorPicker } from "./ColorPicker";
 import { NewNote } from './NewNote';
 import { Pinned } from './Pinned';
 import { Others } from './Others';
-import { SearchBar } from './SearchBar';
+import './styles.css';
 export const Notes = () => {
-  const { notes } = useNote();
   return (
     <div>
-      <h1>Google Keep</h1>
-      <SearchBar />
+      <div className='notes'>
+        <h1>Notes App</h1>
+      </div>
       <NewNote />
       <Pinned />
       <Others />

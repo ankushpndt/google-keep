@@ -59,32 +59,36 @@ export const NoteCard = ({ noteItem }) => {
     <div className='note__card'>
       {
         <>
-          <div
-            className='edit__title'
-            contentEditable='true'
-            role='textbox'
-            onInput={(e) => setNoteTitle(e.target.innerText.replace(/\n/g, ''))}
-            suppressContentEditableWarning={true}
-            data-text='Enter title here'
-          >
-            {noteItem?.title}
-          </div>
-          <div className='notePin'>
-            <button
-              style={{
-                border: 'none',
-                backgroundColor: 'transparent',
-                marginRight: '1rem',
-                cursor: 'pointer',
-              }}
-              onClick={pinChangeHandler}
+          <div className='note__card__body'>
+            <div
+              className='edit__title'
+              contentEditable='true'
+              role='textbox'
+              onInput={(e) =>
+                setNoteTitle(e.target.innerText.replace(/\n/g, ''))
+              }
+              suppressContentEditableWarning={true}
+              data-text='Enter title here'
             >
-              {pin ? (
-                <img src={bookmark} alt='bookmark' width='20' height='20' />
-              ) : (
-                <img src={border} alt='border' width='20' height='20' />
-              )}
-            </button>
+              {noteItem?.title}
+            </div>
+            <div className='note__pin'>
+              <button
+                style={{
+                  border: 'none',
+                  backgroundColor: 'transparent',
+                  marginRight: '1rem',
+                  cursor: 'pointer',
+                }}
+                onClick={pinChangeHandler}
+              >
+                {pin ? (
+                  <img src={bookmark} alt='bookmark' width='20' height='20' />
+                ) : (
+                  <img src={border} alt='border' width='20' height='20' />
+                )}
+              </button>
+            </div>
           </div>
           <div
             className='edit__content'

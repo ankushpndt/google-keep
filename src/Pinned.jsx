@@ -4,7 +4,7 @@ import { v4 } from 'uuid';
 import { NoteCard } from './NoteCard';
 export const Pinned = () => {
   const { filteredArr } = useNote();
-  console.log(filteredArr);
+
   return (
     <div className='pinned'>
       <h3 style={{ paddingBottom: '1rem' }}>Pinned</h3>
