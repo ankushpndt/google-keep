@@ -6,7 +6,7 @@ export const Pinned = () => {
 
 	return (
 		<div className="pinned">
-			<h3 style={{ paddingBottom: "1rem" }}>Pinned</h3>
+			<h3 style={{ paddingBottom: "2rem" }}>Pinned</h3>
 			{filteredArr
 				?.filter((noteItem) => noteItem.isPinned)
 				.sort((a, b) => a.createdAt > b.createdAt)

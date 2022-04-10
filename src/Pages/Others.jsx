@@ -8,7 +8,7 @@ export const Others = () => {
 
 	return (
 		<div className="others">
-			<h3 style={{ paddingBottom: "1rem" }}>Others</h3>
+			<h3 style={{ paddingBottom: "2rem" }}>Others</h3>
 
 			<div>
 				{" "}
