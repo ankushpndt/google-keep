@@ -44,6 +44,7 @@ export const Login = () => {
 							onChange={(e) => setEmail(e.target.value)}
 							required
 							style={{ padding: "6px", width: "210px" }}
+							value={email}
 						/>
 
 						<div className="email__error">{error && error.email}</div>
@@ -70,6 +71,7 @@ export const Login = () => {
 								padding: "6px",
 								width: "210px",
 							}}
+							value={password}
 						/>
 
 						<div className="password__error">{error && error.password}</div>

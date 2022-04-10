@@ -6,6 +6,7 @@ import { ColorPicker } from "../Components/ColorPicker";
 import "../styles.css";
 import bookmark from "../assets/bookmark.svg";
 import border from "../assets/border.svg";
+import { toast } from "react-toastify";
 export const NoteCard = ({ noteItem }) => {
 	const { setNotes } = useNote();
 
@@ -31,6 +32,9 @@ export const NoteCard = ({ noteItem }) => {
 				{ headers: { "auth-token": token } }
 			);
 			setNotes(response.data.savedNote.notes);
+			toast.success(response.data.message, {
+				position: toast.POSITION.BOTTOM_CENTER,
+			});
 		} catch (error) {
 			toast.error(error.response.data.message, {
 				position: toast.POSITION.BOTTOM_CENTER,
@@ -46,6 +50,9 @@ export const NoteCard = ({ noteItem }) => {
 			);
 
 			setNotes(response.data.savedNote?.notes);
+			toast.success(response.data.message, {
+				position: toast.POSITION.BOTTOM_CENTER,
+			});
 		} catch (error) {
 			toast.error(error.response.message, {
 				position: toast.POSITION.BOTTOM_CENTER,
@@ -115,15 +122,9 @@ export const NoteCard = ({ noteItem }) => {
 						}}
 						value={noteTag}
 					>
-						<option defaultValue="No Tag" value="No Tag">
-							No Tag
-						</option>
-						<option defaultValue="Reminder" value="Reminder">
-							Reminder
-						</option>
-						<option defaultValue="ToDo" value="ToDo">
-							ToDo
-						</option>
+						<option value="No Tag">No Tag</option>
+						<option value="Reminder">Reminder</option>
+						<option value="ToDo">ToDo</option>
 					</select>
 
 					<button className="change__btn" onClick={() => updateNote(noteItem)}>

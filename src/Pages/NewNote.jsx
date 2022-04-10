@@ -7,6 +7,7 @@ import { useAuth } from "../Context/authContext";
 import "../styles.css";
 import bookmark from "../assets/bookmark.svg";
 import border from "../assets/border.svg";
+import { toast } from "react-toastify";
 export const NewNote = () => {
 	const {
 		isPinned,
@@ -48,6 +49,9 @@ export const NewNote = () => {
 				);
 
 				setNotes(response.data.saveNote.notes);
+				toast.success(response.data.message, {
+					position: toast.POSITION.BOTTOM_CENTER,
+				});
 				clear();
 			} catch (error) {
 				console.log(error);
