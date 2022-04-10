@@ -37,8 +37,8 @@ export const AuthProvider = ({ children }) => {
 			signUpUser(response.data);
 			setLoader(false);
 		} catch (error) {
-			toast.error("Some error occurred !", {
-				position: toast.POSITION.TOP_LEFT,
+			toast.error(error.response.data.message, {
+				position: toast.POSITION.BOTTOM_CENTER,
 			});
 			console.log(error);
 		}
@@ -51,8 +51,8 @@ export const AuthProvider = ({ children }) => {
 			"login",
 			JSON.stringify({ isUserLoggedIn: true, token, user: userName })
 		);
-		toast.success("Account created successfully !", {
-			position: toast.POSITION.BOTTOM_RIGHT,
+		toast.success("Account created successfully!", {
+			position: toast.POSITION.BOTTOM_CENTER,
 		});
 		navigate("/home");
 	};
@@ -73,8 +73,8 @@ export const AuthProvider = ({ children }) => {
 			if (response.status === 200) navigate("/home");
 		} catch (error) {
 			console.log(error);
-			toast.error("Some error occurred !", {
-				position: toast.POSITION.TOP_LEFT,
+			toast.error(error.response.data.message, {
+				position: toast.POSITION.BOTTOM_CENTER,
 			});
 		}
 	};
@@ -87,7 +87,7 @@ export const AuthProvider = ({ children }) => {
 			JSON.stringify({ isUserLoggedIn: true, token, user: userName })
 		);
 		toast.success("Logged In Successfully!", {
-			position: toast.POSITION.BOTTOM_RIGHT,
+			position: toast.POSITION.BOTTOM_CENTER,
 		});
 		navigate("/home");
 	};

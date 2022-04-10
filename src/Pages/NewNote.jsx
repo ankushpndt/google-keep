@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { v4 } from "uuid";
 import { useNote } from "../Context/noteContext";
 import { ColorPicker } from "../Components/ColorPicker";
@@ -8,19 +8,24 @@ import "../styles.css";
 import bookmark from "../assets/bookmark.svg";
 import border from "../assets/border.svg";
 export const NewNote = () => {
-	const { isPinned, setPinned } = useNote();
-	const { title, setTitle } = useNote();
-	const { content, setContent } = useNote();
-	const [isActive, setIsActive] = useState(false);
-	const { color, setColor } = useNote();
-	const { notes, setNotes } = useNote();
-	const { tag, setTag } = useNote();
-	const { setShow } = useNote();
+	const {
+		isPinned,
+		setPinned,
+		title,
+		setTitle,
+		content,
+		setContent,
+		color,
+		setColor,
+		tag,
+		setTag,
+		setNotes,
+	} = useNote();
+
 	const { token } = useAuth();
 
 	const clear = () => {
 		setPinned(false);
-		setIsActive(false);
 		setContent("");
 		setTitle("");
 		setColor("white");
@@ -46,16 +51,20 @@ export const NewNote = () => {
 				clear();
 			} catch (error) {
 				console.log(error);
+				toast.error(error.response.data.message, {
+					position: toast.POSITION.BOTTOM_CENTER,
+				});
 			}
 		} else {
-			alert("You cannot add empty note");
+			toast.error("You cannot add an empty note", {
+				position: toast.POSITION.BOTTOM_CENTER,
+			});
 		}
 	};
 
 	return (
 		<div className="new__note">
 			<div
-				onFocus={() => setIsActive(true)}
 				style={{
 					display: "flex",
 					flexDirection: "column",
@@ -133,7 +142,6 @@ export const NewNote = () => {
 							cursor: "pointer",
 							color: "white",
 							padding: "0.5rem",
-							// borderRadius: '5px',
 							fontSize: "1rem",
 						}}
 						onClick={addNote}

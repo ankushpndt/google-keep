@@ -4,7 +4,7 @@ import { v4 } from "uuid";
 import "../styles.css";
 export const Others = () => {
 	const { filteredArr } = useNote();
-	// console.log(filteredArr);
+
 	return (
 		<div className="others">
 			<h3 style={{ paddingBottom: "1rem" }}>Others</h3>
@@ -30,7 +30,6 @@ export const Others = () => {
 								}}
 							>
 								<NoteCard noteItem={noteItem} />
-								{/* <ColorPicker id={noteItem.id} /> */}
 							</div>
 						);
 					})}

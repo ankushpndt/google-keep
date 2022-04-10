@@ -21,7 +21,9 @@ export const NoteProvider = ({ children }) => {
 
 				setNotes(response.data.notes);
 			} catch (error) {
-				console.log(error);
+				toast.error(error.response.data.message, {
+					position: toast.POSITION.BOTTOM_CENTER,
+				});
 			}
 		}
 	};

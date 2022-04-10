@@ -30,10 +30,11 @@ export const NoteCard = ({ noteItem }) => {
 				},
 				{ headers: { "auth-token": token } }
 			);
-			console.log(response);
 			setNotes(response.data.savedNote.notes);
 		} catch (error) {
-			console.log(error.response);
+			toast.error(error.response.data.message, {
+				position: toast.POSITION.BOTTOM_CENTER,
+			});
 		}
 	};
 
@@ -46,7 +47,9 @@ export const NoteCard = ({ noteItem }) => {
 
 			setNotes(response.data.savedNote?.notes);
 		} catch (error) {
-			console.log(error);
+			toast.error(error.response.message, {
+				position: toast.POSITION.BOTTOM_CENTER,
+			});
 		}
 	};
 
@@ -110,34 +113,17 @@ export const NoteCard = ({ noteItem }) => {
 							padding: "0.5rem",
 							marginRight: "1rem",
 						}}
+						value={noteTag}
 					>
-						{noteTag === "Reminder" ? (
-							<>
-								<option value="No Tag">No Tag</option>
-								<option selected value={noteTag}>
-									{noteTag}
-								</option>
-								<option value="ToDo">ToDo</option>
-							</>
-						) : noteTag === "No Tag" ? (
-							<>
-								<option selected value={noteTag}>
-									{noteTag}
-								</option>
-								<option value="Reminder">Reminder</option>
-								<option value="ToDo">ToDo</option>
-							</>
-						) : noteTag === "ToDo" ? (
-							<>
-								<option value="No Tag">No Tag</option>
-								<option value="Reminder">Reminder</option>
-								<option selected value={noteTag}>
-									{noteTag}
-								</option>
-							</>
-						) : (
-							""
-						)}
+						<option defaultValue="No Tag" value="No Tag">
+							No Tag
+						</option>
+						<option defaultValue="Reminder" value="Reminder">
+							Reminder
+						</option>
+						<option defaultValue="ToDo" value="ToDo">
+							ToDo
+						</option>
 					</select>
 
 					<button className="change__btn" onClick={() => updateNote(noteItem)}>
