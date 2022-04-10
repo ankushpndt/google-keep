@@ -27,7 +27,7 @@ export const App = () => {
 					}}
 				>
 					<NavLink
-						to={token ? "/home" : "/"}
+						to={login ? "/home" : "/"}
 						style={{ color: "white" }}
 						className="note__route"
 					>
