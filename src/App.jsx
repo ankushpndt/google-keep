@@ -26,7 +26,11 @@ export const App = () => {
 						alignItems: "center",
 					}}
 				>
-					<NavLink to="/" style={{ color: "white" }} className="note__route">
+					<NavLink
+						to={token ? "/home" : "/"}
+						style={{ color: "white" }}
+						className="note__route"
+					>
 						Notes App
 					</NavLink>
 					{login && <SearchBar />}
