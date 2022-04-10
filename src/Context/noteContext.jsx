@@ -6,13 +6,14 @@ const noteContext = createContext();
 
 export const NoteProvider = ({ children }) => {
 	const { token } = useAuth();
-
+	const [loader, setLoader] = useState(false);
 	useEffect(() => {
 		loadInitialData();
 	}, [token]);
 	const loadInitialData = async () => {
 		if (token) {
 			try {
+				setLoader(true);
 				const response = await axios.get(
 					"https://googleKeep.ankushpndt.repl.co/notes",
 
@@ -20,6 +21,7 @@ export const NoteProvider = ({ children }) => {
 				);
 
 				setNotes(response.data.notes);
+				setLoader(false);
 			} catch (error) {
 				toast.error(error.response.data.message, {
 					position: toast.POSITION.BOTTOM_CENTER,
@@ -59,6 +61,7 @@ export const NoteProvider = ({ children }) => {
 				setSearch,
 				filteredArr,
 				setFilteredArr,
+				loader,
 			}}
 		>
 			{children}
