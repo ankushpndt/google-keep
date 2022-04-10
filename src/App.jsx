@@ -10,6 +10,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { SearchBar } from "./Components/SearchBar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const App = () => {
 	const { userLogout, login } = useAuth();
 	return (
@@ -88,6 +90,7 @@ export const App = () => {
 					}
 				/>
 			</Routes>
+			<ToastContainer />
 		</div>
 	);
 };
