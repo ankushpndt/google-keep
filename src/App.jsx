@@ -5,6 +5,7 @@ import React from "react";
 import { Notes } from "./Pages/Notes";
 import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
+import { PageNotFound } from "./Components/PageNotFound";
 import { useAuth } from "./Context/authContext";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
@@ -93,6 +94,7 @@ export const App = () => {
 						</PrivateRoute>
 					}
 				/>
+				<Route path="*" element={<PageNotFound />} />
 			</Routes>
 			<ToastContainer />
 		</div>
