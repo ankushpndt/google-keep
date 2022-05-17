@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
 			toast.error(error.response.data.message, {
 				position: toast.POSITION.BOTTOM_CENTER,
 			});
-			console.log(error);
+			setLoader(false);
 		}
 	};
 	const signUpUser = ({ token, userName }) => {
@@ -72,10 +72,10 @@ export const AuthProvider = ({ children }) => {
 			setLoader(false);
 			if (response.status === 200) navigate("/home");
 		} catch (error) {
-			console.log(error);
 			toast.error(error.response.data.message, {
 				position: toast.POSITION.BOTTOM_CENTER,
 			});
+			setLoader(false);
 		}
 	};
 	const loginUser = ({ token, userName }) => {
