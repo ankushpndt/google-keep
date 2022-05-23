@@ -43,9 +43,14 @@
 }
 .edit__title {
 	font-weight: bolder;
+	padding: 0.5rem;
 }
 .edit__content {
-	padding: 1rem 0;
+	padding: 0.5rem;
+	margin: 1rem 0;
+}
+[contenteditable]:focus {
+	outline: 2px solid black;
 }
 #outline:focus {
 	outline: 2px solid #1d4ed8;
@@ -61,6 +66,17 @@
 .email,
 .password {
 	padding-bottom: 1rem;
+}
+#login__btn__outlined {
+	border-color: black;
+	color: black;
+	cursor: pointer;
+	background-color: white;
+	padding: 0.5rem;
+}
+#login__btn__outlined:hover {
+	color: white;
+	background-color: black;
 }
 .login {
 	display: flex;
@@ -86,6 +102,7 @@
 	color: white;
 	font-size: 1rem;
 	padding: 0.3rem;
+	border-radius: 4px;
 }
 [contentEditable="true"]:empty:not(:focus):before {
 	content: attr(data-text);

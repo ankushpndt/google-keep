@@ -19,6 +19,7 @@ export const NoteCard = ({ noteItem }) => {
 
 	const updateNote = async (noteItem) => {
 		try {
+			toast.loading("Please wait");
 			const response = await axios.put(
 				`https://googleKeep.ankushpndt.repl.co/notes`,
 				{
@@ -31,10 +32,13 @@ export const NoteCard = ({ noteItem }) => {
 				},
 				{ headers: { "auth-token": token } }
 			);
-			setNotes(response.data.savedNote.notes);
-			toast.success(response.data.message, {
-				position: toast.POSITION.BOTTOM_CENTER,
-			});
+			if (response.data.success === true) {
+				toast.dismiss();
+				setNotes(response.data.savedNote.notes);
+				toast.success(response.data.message, {
+					position: toast.POSITION.BOTTOM_CENTER,
+				});
+			}
 		} catch (error) {
 			toast.error(error.response.data.message, {
 				position: toast.POSITION.BOTTOM_CENTER,
@@ -44,15 +48,18 @@ export const NoteCard = ({ noteItem }) => {
 
 	const deleteNote = async (noteItem) => {
 		try {
+			toast.loading("Please wait");
 			const response = await axios.delete(
 				`https://googleKeep.ankushpndt.repl.co/notes/${noteItem._id}`,
 				{ headers: { "auth-token": token } }
 			);
-
-			setNotes(response.data.savedNote?.notes);
-			toast.success(response.data.message, {
-				position: toast.POSITION.BOTTOM_CENTER,
-			});
+			if (response.data.success === true) {
+				toast.dismiss();
+				setNotes(response.data.savedNote?.notes);
+				toast.success(response.data.message, {
+					position: toast.POSITION.BOTTOM_CENTER,
+				});
+			}
 		} catch (error) {
 			toast.error(error.response.message, {
 				position: toast.POSITION.BOTTOM_CENTER,
@@ -119,6 +126,7 @@ export const NoteCard = ({ noteItem }) => {
 							width: "6.8rem",
 							padding: "0.5rem",
 							marginRight: "1rem",
+							marginLeft: "0.5rem",
 						}}
 						value={noteTag}
 					>
@@ -135,7 +143,9 @@ export const NoteCard = ({ noteItem }) => {
 					</button>
 				</>
 			}
-			<ColorPicker id={noteItem._id} />
+			<div style={{ marginLeft: "0.5rem" }}>
+				<ColorPicker id={noteItem._id} />
+			</div>
 		</div>
 	);
 };

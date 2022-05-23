@@ -35,6 +35,7 @@ export const NewNote = () => {
 	const addNote = async () => {
 		if (title || content) {
 			try {
+				toast.loading("Please wait");
 				const response = await axios.post(
 					"https://googleKeep.ankushpndt.repl.co/notes",
 					{
@@ -47,14 +48,15 @@ export const NewNote = () => {
 					},
 					{ headers: { "auth-token": token } }
 				);
-
-				setNotes(response.data.saveNote.notes);
-				toast.success(response.data.message, {
-					position: toast.POSITION.BOTTOM_CENTER,
-				});
+				if (response.data.success === true) {
+					toast.dismiss();
+					setNotes(response.data.saveNote.notes);
+					toast.success("Note created successfully", {
+						position: toast.POSITION.BOTTOM_CENTER,
+					});
+				}
 				clear();
 			} catch (error) {
-				console.log(error);
 				toast.error(error.response.data.message, {
 					position: toast.POSITION.BOTTOM_CENTER,
 				});
@@ -132,6 +134,7 @@ export const NewNote = () => {
 							width: "6.8rem",
 							padding: "0.5rem",
 							marginRight: "1rem",
+							marginLeft: "0.5rem",
 						}}
 					>
 						<option value="No Tag">No Tag</option>
@@ -156,7 +159,9 @@ export const NewNote = () => {
 						Clear
 					</button>
 					<br />
-					<ColorPicker />
+					<div style={{ marginLeft: "0.5rem" }}>
+						<ColorPicker />
+					</div>
 				</div>
 			</div>
 		</div>

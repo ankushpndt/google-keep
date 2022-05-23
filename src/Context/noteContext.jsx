@@ -20,8 +20,10 @@ export const NoteProvider = ({ children }) => {
 					{ headers: { "auth-token": token } }
 				);
 
-				setNotes(response.data.notes);
-				setLoader(false);
+				if (response.data.success === true) {
+					setNotes(response.data.notes);
+					setLoader(false);
+				}
 			} catch (error) {
 				toast.error(error.response.data.message, {
 					position: toast.POSITION.BOTTOM_CENTER,

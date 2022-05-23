@@ -11,7 +11,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { SearchBar } from "./Components/SearchBar";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, Slide } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export const App = () => {
 	const { userLogout, login } = useAuth();
@@ -96,7 +96,13 @@ export const App = () => {
 				/>
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
-			<ToastContainer />
+			<ToastContainer
+				position="bottom-center"
+				autoClose={3000}
+				hideProgressBar={true}
+				transition={Slide}
+				theme="dark"
+			/>
 		</div>
 	);
 };
