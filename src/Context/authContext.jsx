@@ -22,7 +22,6 @@ export const AuthProvider = ({ children }) => {
 	const [error, setError] = useState("");
 	const [user, setUser] = useState(userName);
 	const [loader, setLoader] = useState(false);
-	// const navigate = useNavigate();
 
 	//signup
 
@@ -41,6 +40,7 @@ export const AuthProvider = ({ children }) => {
 				position: toast.POSITION.BOTTOM_CENTER,
 			});
 			setLoader(false);
+			setError(error.response.data?.errors);
 		}
 	};
 	const signUpUser = ({ token, userName }) => {
