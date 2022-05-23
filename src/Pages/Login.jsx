@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import "../styles.css";
 import { Loader } from "../Components/Loader";
 import { TextField } from "@mui/material";
-import { validateForm } from "../Components/ValidateForm";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
@@ -12,14 +11,13 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 export const Login = () => {
 	const { loginWithCredentials, error, loader } = useAuth();
 	const [showPass, setShowPass] = useState(false);
-	const [errorMessage, setErrorMessage] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 
 	const submitHandler = (e) => {
 		e.preventDefault();
-		validateForm({ email, password, setErrorMessage }) &&
-			loginWithCredentials(email, password);
+
+		loginWithCredentials(email, password);
 	};
 
 	return (
@@ -80,11 +78,6 @@ export const Login = () => {
 							),
 						}}
 					/>
-					<br />
-					<div className="name__error">
-						{errorMessage !== "" && errorMessage}
-					</div>
-					<div>{error?.message}</div>
 					<br />
 					{/*Login button*/}
 					<input type="submit" value="LOGIN" id="login__btn__outlined" />

@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 		navigate("/home");
 	};
 	// login;
-	const loginWithCredentials = async ({ email, password }) => {
+	const loginWithCredentials = async (email, password) => {
 		try {
 			setLoader(true);
 			const response = await axios.post(
