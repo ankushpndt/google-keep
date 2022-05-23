@@ -40,6 +40,7 @@ export const NoteCard = ({ noteItem }) => {
 				});
 			}
 		} catch (error) {
+			toast.dismiss();
 			toast.error(error.response.data.message, {
 				position: toast.POSITION.BOTTOM_CENTER,
 			});
@@ -61,6 +62,7 @@ export const NoteCard = ({ noteItem }) => {
 				});
 			}
 		} catch (error) {
+			toast.dismiss();
 			toast.error(error.response.message, {
 				position: toast.POSITION.BOTTOM_CENTER,
 			});

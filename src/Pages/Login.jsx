@@ -17,7 +17,7 @@ export const Login = () => {
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		loginWithCredentials(email, password);
+		loginWithCredentials({ email, password });
 	};
 
 	return (

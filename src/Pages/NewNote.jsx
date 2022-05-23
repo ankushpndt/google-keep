@@ -62,6 +62,7 @@ export const NewNote = () => {
 				});
 			}
 		} else {
+			toast.dismiss();
 			toast.error("You cannot add an empty note", {
 				position: toast.POSITION.BOTTOM_CENTER,
 			});

@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
 		navigate("/home");
 	};
 	// login;
-	const loginWithCredentials = async (email, password) => {
+	const loginWithCredentials = async ({ email, password }) => {
 		try {
 			setLoader(true);
 			const response = await axios.post(
@@ -97,6 +97,7 @@ export const AuthProvider = ({ children }) => {
 		setToken("");
 		setUser("");
 		navigate("/");
+		toast.success("Logged out successfully");
 	};
 
 	return (
